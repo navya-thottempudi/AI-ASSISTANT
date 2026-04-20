@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/history");
+        const res = await axios.get("https://ai-assistant-git-main-navya-thottempudis-projects.vercel.app/history");
 
         const formatted = res.data.reverse().flatMap(chat => [
           { type: "user", text: chat.question },
@@ -42,9 +42,10 @@ function App() {
     setQuestion("");
 
     try {
-      const res = await axios.post("http://localhost:5000/ask", {
-        question,
-      });
+      // Ask question
+   const res = await axios.post(
+  "https://ai-assistant-git-main-navya-thottempudis-projects.vercel.app/ask",
+  { question });
 
       const botMsg = { type: "bot", text: res.data.answer };
       setChat(prev => [...prev, botMsg]);
